@@ -1,6 +1,12 @@
+
 hourly_rate = 35
 hours = 36
-print(hourly_rate * hours)
+base_pay = hourly_rate * hours
 stipend = 2500
-print(hourly_rate * hours + stipend)
-print("Boston contract: $" + str(hourly_rate * hours + stipend))
+total = base_pay + stipend
+
+print(f"base_pay: ${base_pay}")
+print(f"stipend: ${stipend}")
+print(f"Boston contract: ${total}")
+
+
