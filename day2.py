@@ -49,3 +49,23 @@ loan_repayment = 0.2 * total_yearly_pay_after_expenses
 total_yearly_pay_after_loan = total_yearly_pay_after_expenses - loan_repayment
 print(f"loan_repayment: ${loan_repayment}")
 print(f"total_yearly_pay_after_loan: ${total_yearly_pay_after_loan}")
+
+#11 example of calculating yearly pay based on hourly rate and hours worked with a stipend, bonus, tax deduction, wedding contribution, retirement contribution, expense deduction, loan repayment, and divide the loan repayment 3 quarters to personal loans and to credit card
+personal_loan_repayment = 0.75 * loan_repayment
+credit_card_repayment = 0.25 * loan_repayment
+total_yearly_pay_after_personal_loan = total_yearly_pay_after_loan - personal_loan_repayment
+total_yearly_pay_after_credit_card = total_yearly_pay_after_loan - credit_card_repayment
+print(f"personal_loan_repayment: ${personal_loan_repayment}")
+print(f"credit_card_repayment: ${credit_card_repayment}")
+print(f"total_yearly_pay_after_personal_loan: ${total_yearly_pay_after_personal_loan}")
+print(f"total_yearly_pay_after_credit_card: ${total_yearly_pay_after_credit_card}") 
+
+#12 example of sum of all loans divided by 4
+total_loans = loan_repayment + personal_loan_repayment + credit_card_repayment
+average_loan_payment = total_loans / 4
+print(f"total_loans: ${total_loans}")
+print(f"average_loan_payment: ${average_loan_payment}")
+
+#13 example showing what is left after all deductions and loans
+final_yearly_pay = total_yearly_pay_after_loan - total_loans
+print(f"final_yearly_pay: ${final_yearly_pay}") 
