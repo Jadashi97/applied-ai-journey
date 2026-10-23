@@ -61,11 +61,12 @@ print(f"total_yearly_pay_after_personal_loan: ${total_yearly_pay_after_personal_
 print(f"total_yearly_pay_after_credit_card: ${total_yearly_pay_after_credit_card}") 
 
 #12 example of sum of all loans divided by 4
-total_loans = loan_repayment + personal_loan_repayment + credit_card_repayment
-average_loan_payment = total_loans / 4
+# personal + credit card are just a split of loan_repayment, so don't add them again
+total_loans = personal_loan_repayment + credit_card_repayment
+quarterly_loan_payment = total_loans / 4
 print(f"total_loans: ${total_loans}")
-print(f"average_loan_payment: ${average_loan_payment}")
+print(f"quarterly_loan_payment: ${quarterly_loan_payment}")
 
 #13 example showing what is left after all deductions and loans
-final_yearly_pay = total_yearly_pay_after_loan - total_loans
+final_yearly_pay = total_yearly_pay_after_loan  # loan was already subtracted in #10
 print(f"final_yearly_pay: ${final_yearly_pay}") 
