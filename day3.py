@@ -12,3 +12,32 @@ print(last_two_digits)
 facility_name = "MetroHealth Medical Center"
 first_five_characters = facility_name[:5]
 print(first_five_characters)
+
+#4 example Clean up a messy name with extra spaces like "   MetroHealth   " using strip().
+messy_name = "   MetroHealth   "
+print(messy_name.strip())
+
+#5 example Turn a shouted state like "OHIO" into title case with title().
+shouted_state = "OHIO"
+print(shouted_state.title())
+
+#6 example Make an agency name all lowercase with lower() so "AYA Healthcare" matches "aya healthcare".
+agency = "AYA Healthcare"
+print(agency.lower() == "aya healthcare")
+
+#7 example Fix a typo in a facility name with replace().
+typo_name = "MetroHelth Medical Center"
+print(typo_name.replace("Helth", "Health"))
+
+#8 example Clean a phone number like "(216) 778-7800" down to just digits by removing symbols and spaces.
+phone = "(216) 778-7800"
+print(phone.replace("(", "").replace(")", "").replace("-", "").replace(" ", ""))
+
+#9 example Format pay with commas and 2 decimals using an f-string, like $3,716.00.
+weekly_pay = 4033
+print(f"Weekly pay: ${weekly_pay:,.2f}")
+
+#10 example Join a city and state into one string, then check its length with len().
+city = "Cleveland"
+state_name = "Ohio"
+print(f"{city}, {state_name} has {len(city + ', ' + state_name)} characters")
