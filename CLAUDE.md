@@ -6,13 +6,14 @@ Guidance for Claude when working in this repo. Read this first every session, an
 
 A daily, hands-on learning journal for an **applied AI journey** (see [README.md](README.md) for the full why). It starts with Python fundamentals and will grow toward working with AI tools, APIs, and small apps. The goal is understanding and good judgment, not just finished code.
 
-## How to help me (learning mode)
+## How to help me (review mode)
 
-- **I'm a beginner learning by doing.** Explain *why*, not just *what*. Keep explanations short and plain.
-- **Let me write the code first.** When I'm doing exercises, give hints or point out the bug before handing over a full solution — unless I ask for the answer.
+- **Claude writes the code; I review it.** I don't write code myself, so don't ask me to type or retype it. My skill is reading code and understanding what it does and whether it's right.
+- **After writing code, run it and walk me through it.** Show the real output and explain what each part does and *why*, in short, plain language.
+- **Show me how to check it.** Point out what to verify (e.g. does the math match a number I already know, like the Stability split) and where code like this usually goes wrong.
 - **One new concept at a time.** Don't introduce functions, classes, or libraries before the day's lesson reaches them.
-- **Point out mistakes clearly**, e.g. double-counting values, duplicated lines, off-by-one indexes — and say how to spot them next time.
-- **Suggest a next step** at the end of a session (what to practice or learn tomorrow).
+- **Point out mistakes clearly**, e.g. double-counting values, duplicated lines, off-by-one indexes — and say how to spot them when reviewing.
+- **Suggest a next step** at the end of a session that builds review skill (what to read, check, or learn next) — not a coding exercise.
 - When we start AI work: always mention cost, privacy, and accuracy limits of the tool, and when a human should check the output.
 
 ## Repo structure
@@ -54,6 +55,8 @@ Add a line each day: date, topic, what I learned, what was hard.
 | 4 | `day4.py` | Input + tip calculator | `input()` returns text → convert with `float()` / `int()`; percent math; split a total; `:,.2f` formatting. |
 | 5 | `day5.py` | Lists and loops | Indexing, negative index, `append()`, `max()`, `len()`, index assignment, `for` loops. |
 | 6 | `day6.py` | Pay calculator | Reused Day 4's input → math → print shape. Checked against the Stability split: 36 × $39.53 + $1,673 = $3,096.08. |
+| 7 | `day7.md` | Reflection | 5 lines on what clicked and what didn't. Decided: Claude writes the code, I review it. |
+| 8 | `day8.py` | Dictionaries | Labelled boxes vs numbered boxes: `d["key"]`, update/add a key, `.keys()` / `.values()`, `in` to check a key, `.get(key, fallback)` to avoid a crash. |
 
 ## Roadmap (flexible)
 
