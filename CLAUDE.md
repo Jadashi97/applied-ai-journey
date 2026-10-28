@@ -57,6 +57,7 @@ Add a line each day: date, topic, what I learned, what was hard.
 | 6 | `day6.py` | Pay calculator | Reused Day 4's input → math → print shape. Checked against the Stability split: 36 × $39.53 + $1,673 = $3,096.08. |
 | 7 | `day7.md` | Reflection | 5 lines on what clicked and what didn't. Decided: Claude writes the code, I review it. |
 | 8 | `day8.py` | Dictionaries | Labelled boxes vs numbered boxes: `d["key"]`, update/add a key, `.keys()` / `.values()`, `in` to check a key, `.get(key, fallback)` to avoid a crash. |
+| 9 | `day9.py` | For-loops | Loop over lists and a list of dicts; per-item math inside the loop; running total starts at 0 before the loop, prints after it; `range(1, 6)` stops before 6; `.items()` for label + value. Checked: Cleveland = $3,096.08. |
 
 ## Roadmap (flexible)
 
