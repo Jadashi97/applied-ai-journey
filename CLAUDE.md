@@ -18,7 +18,7 @@ A daily, hands-on learning journal for an **applied AI journey** (see [README.md
 
 ## Repo structure
 
-- One file per day: `dayN.py` (e.g. `day2.py`, `day3.py`, `day5.py`). `hello.py` is Day 1.
+- One file per day: `dayN.py` (e.g. `day1.py`, `day2.py`, `day3.py`). Reflection days use `dayN.md`.
 - Flat structure for now. When a project grows beyond one file, give it its own folder (e.g. `projects/<name>/`) with a short README.
 - No dependencies yet — plain Python 3 standard library.
 
@@ -49,7 +49,7 @@ Add a line each day: date, topic, what I learned, what was hard.
 
 | Day | File | Topic | Notes |
 |-----|------|-------|-------|
-| 1 | `hello.py` | First Python | Variables, multiplication, f-string printing (contract pay). |
+| 1 | `day1.py` | First Python | Variables, multiplication, f-string printing (contract pay). |
 | 2 | `day2.py` | Variables, numbers, printing | Chained pay calculations. Lesson: don't subtract/add the same amount twice (loan double-counting fix). |
 | 3 | `day3.py` | Strings | `split()`, slicing `[-2:]`, `[:5]`; cleaning with `strip()`, `title()`, `lower()`, `replace()` (chained); f-string number formatting `:,.2f`; `len()`. |
 | 4 | `day4.py` | Input + tip calculator | `input()` returns text → convert with `float()` / `int()`; percent math; split a total; `:,.2f` formatting. |
