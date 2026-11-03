@@ -59,6 +59,7 @@ Add a line each day: date, topic, what I learned, what was hard.
 | 8 | `day8.py` | Dictionaries | Labelled boxes vs numbered boxes: `d["key"]`, update/add a key, `.keys()` / `.values()`, `in` to check a key, `.get(key, fallback)` to avoid a crash. |
 | 9 | `day9.py` | For-loops | Loop over lists and a list of dicts; per-item math inside the loop; running total starts at 0 before the loop, prints after it; `range(1, 6)` stops before 6; `.items()` for label + value. Checked: Cleveland = $3,096.08. |
 | 10 | `day10.py` | While-loops + if/elif/else | `while` needs a line that changes the counter or it never stops; `%` for even/odd; `if`/`elif`/`else` checks top-down, first match wins; `and` needs both true. Gotcha: "add while under $10,000" ended at $11,280 because the check happened *before* adding; fixed (my idea) with an `if` that checks `total + next <= 10000` first and `break` to stop → $7,520. |
+| 11–13 | `day13.py` | Best offer → function → flexible function | Track "best so far" and update only when beaten (`>`, so a tie keeps the first). `def` + `return` hands back the winner instead of printing. Default argument `rank_by="weekly_total"`. Empty list returns `None`; check `is None` before using it. Checked: Boston wins on total ($3,900 at 40 hours), Burlington on rate ($42), Cleveland wins when its stipend goes to $3,000. |
 
 ## Roadmap (flexible)
 
