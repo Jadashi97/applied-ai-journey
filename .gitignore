@@ -1,0 +1,3 @@
+# output files that day15.py recreates every time it runs
+ranked_offers.txt
+offers.csv
