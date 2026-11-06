@@ -109,6 +109,16 @@ def grand_total_from_csv(csv_name, ranked):
     grand_total = 0
     skipped = []  # cities whose row couldn't be read, so we can report them at the end
     for row in rows:
+        # check the row has one value per header column BEFORE unpacking it into six names.
+        # A short row (missing column), a long row, or a blank line would otherwise crash on the
+        # unpack line, which used to sit outside the try (the bug found on Day 16).
+        if len(row) != len(header):
+            print(f"  skipped row {row}: expected {len(header)} values, got {len(row)}")
+            if len(row) >= 2:
+                skipped.append(row[1])  # the city is the 2nd value, if the row got that far
+            else:
+                skipped.append("blank or 1-value row")
+            continue
         rank, city, hourly_rate, stipend, hours, weekly_total = row
         # the try is INSIDE the loop: one bad row jumps to except, then the loop
         # carries on with the next row. A try around the whole loop would stop at the first bad row.
@@ -156,3 +166,15 @@ with open(bad_csv_name, "w", newline="") as file:
     writer.writerow([2, "Burlington", 42, 1900, 36, "three thousand four hundred"])  # the bad value
     writer.writerow([3, "Cleveland", 39.53, 1700, 36, 3123.08])
 grand_total_from_csv(bad_csv_name, ranked)
+
+#11 test 4, missing column (fix added after Day 16): Cleveland's row has no weekly_total at all.
+# It should be skipped and noted, not crash; Boston $3,900.00 + Burlington $3,412.00 = $7,312.00.
+print("\n=== test 4: CSV row with a missing column ===")
+short_csv_name = "offers_short_row.csv"
+with open(short_csv_name, "w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerow(["rank", "city", "hourly_rate", "stipend", "hours", "weekly_total"])
+    writer.writerow([1, "Boston", 35, 2500, 40, 3900.0])
+    writer.writerow([2, "Burlington", 42, 1900, 36, 3412.0])
+    writer.writerow([3, "Cleveland", 39.53, 1700, 36])  # only 5 values: weekly_total is missing
+grand_total_from_csv(short_csv_name, ranked)
