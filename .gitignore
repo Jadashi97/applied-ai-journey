@@ -2,3 +2,5 @@
 ranked_offers.txt
 offers.csv
 offers_bad_row.csv
+# Python makes this cache folder when a file imports a module (Day 17)
+__pycache__/
