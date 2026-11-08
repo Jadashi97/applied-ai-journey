@@ -48,7 +48,7 @@ Every later day must reproduce these exactly. Formula: `hourly_rate × hours + s
 | Offer missing `stipend` | `KeyError: 'stipend'` (not handled) | Yes, documented as open |
 | `hourly_rate` = `"42"` (text) | `TypeError` (not handled) | Yes, documented as open |
 
-## Planted-bug check (throwaway branch `day18-bug-ascending`, not merged)
+## Planted-bug check (throwaway branch `day18-bug-ascending`: never pushed or merged, deleted after the check)
 
 On that branch only, `reverse=True` was changed to `reverse=False` in `offer_ranking.py`.
 
