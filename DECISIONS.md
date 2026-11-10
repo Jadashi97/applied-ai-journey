@@ -73,7 +73,7 @@ The choices made while building the contract offer tool (Days 14–18). For each
 **Why:** the person reviewing (me) doesn't write the code, so reviewing it *is* the skill being built. A PR shows exactly what changed, line by line. On Day 18, a planted bug (sorting lowest-first) passed every **total** check and was caught only by the **order** check. That's the reason the order is checked separately.
 
 **Rejected:**
-- *Committing straight to `main`.* There's no point where a change gets read before it lands. (CLAUDE.md still says "commit on `main`". That wording is out of date now that every change goes through a PR.)
+- *Committing straight to `main`.* There's no point where a change gets read before it lands. (CLAUDE.md used to say "commit on `main`". It was updated on Day 19 to the branch → PR → review → merge steps.)
 - *Checking totals only.* The Day 18 bug passed every total check.
 - *Merging the bug branch, or pushing it to GitHub.* The bug branch existed only to practise spotting the bug. It was never pushed, and it was deleted after the check.
 - *Reusing a merged PR for follow-up work.* Each new piece of work gets a new PR.

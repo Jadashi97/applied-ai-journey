@@ -39,9 +39,18 @@ python3 day5.py
 
 ## Git workflow
 
-- Commit at the end of each day on `main`.
-- Message format: `Day N: <topic> — <what>` (e.g. `Day 5: lists and loops — examples`).
-- Fixes to an earlier day: `Day N: fix <what>`.
+Never commit straight to `main`. Every change goes through a branch and a pull request, so it gets read before it lands. (Why: see [DECISIONS.md](DECISIONS.md) #5.)
+
+1. **Branch from the latest `main`** for each day's work, e.g. `day19-docs`. Start a fresh branch after a PR is merged; never reuse a merged PR.
+2. **Commit** on that branch. Message format: `Day N: <topic> — <what>` (e.g. `Day 5: lists and loops — examples`). Fixes to an earlier day: `Day N: fix <what>`.
+3. **Push** the branch and **open a PR** into `main`.
+4. **Review before merging:**
+   - Run the script and check it against the Day 15 anchor: the totals (Boston $3,900.00, Burlington $3,412.00, Cleveland $3,123.08, grand total $10,435.08) **and** the order (Boston → Burlington → Cleveland). Totals alone don't catch a sort bug.
+   - Try one bad input on purpose.
+   - Read the diff until every changed line can be explained. If not, ask for an explanation and don't merge yet.
+   - Scan for secrets and real personal data. All offer data stays synthetic.
+5. **Merge** only after all of the above, and only when I say so.
+6. Update the **Progress log** below as part of the day's PR.
 
 ## Progress log
 
@@ -64,6 +73,8 @@ Add a line each day: date, topic, what I learned, what was hard.
 | 15 | `day15.py` | Files | `with open(name, "w")` writes (and wipes any old copy); `write()` needs `"\n"` for a new line; the file is saved when the `with` block ends; `open(name, "r")` + `.read()` reads it back. One `file_name` variable for both steps. Checked: `ranked_offers.txt` matches day14 — Boston $3,900.00, Burlington $3,412.00, Cleveland $3,123.08. Then CSV: `csv.writer` + header row, `newline=""`; `csv.reader` gives every value back as **text**, so `float()` before math (`"3900" + "3412"` = `"39003412"`). Recomputed each total from the read-back: all match; grand total $10,435.08. Output files are in `.gitignore`. |
 | 16 | `day16.py` | Error handling | `try`/`except` with one **specific** error each: `FileNotFoundError` (missing file), `ValueError` (`float("forty two")`), `KeyError` (missing dict key); `as error` shows Python's own message. Read a traceback bottom-up: last line = what kind of error, line above = where. Applied to the contract tool: missing file → friendly message + fall back to the offers in memory; `try` *inside* the loop + `continue` skips one bad CSV row and keeps going. Checked: good files $10,435.08 (same as day15); missing files $10,435.08 from memory; bad Burlington row skipped → Boston $3,900 + Cleveland $3,123.08 = $7,023.08. Fixed later: a row with a missing column used to crash (the unpack sat outside the `try`); now `len(row) != len(header)` is checked first → skipped and noted (test 4: Cleveland short row → Boston + Burlington = $7,312.00; blank and extra-column rows also skipped). |
 | 17 | `day17.py` + `offer_ranking.py` | Modules + dates | Moved `rank_offers` into its own module `offer_ranking.py` (a module = a `.py` file you import; it only defines, never prints). `from offer_ranking import rank_offers` in day17. `from datetime import date`; `date.fromisoformat("2027-01-04")` turns text into a real date; end − start gives `.days` *between* → `+1` to count both first and last day (off-by-one). `//` = whole weeks, `%` = leftover days. Bad date (`2027-02-30`) → `ValueError`, caught as on Day 16. Checked: Boston $3,900.00 / 91 days (13 wks), Burlington $3,412.00 / 56 days (8 wks), Cleveland $3,123.08 / 87 days (12 wks 3 days); grand total $10,435.08 = day15. `__pycache__/` added to `.gitignore`. |
+| 18 | `SPEC.md`, `TEST_LOG.md` | Review: spec, test log, planted bug | Wrote a spec for `rank_offers` (inputs, outputs, edge cases, done criteria) and a test log of real results. Learned where each edge case is handled: the module handles only empty list + unknown `rank_by`; files/rows in `day16.py`, dates in `day17.py`. Not handled: missing key → `KeyError`, rate as text → `TypeError` (`"42" * 36` repeats the text). Planted bug `reverse=False`: every total and $10,435.08 still matched, only the **order** was wrong → check order separately. Bug branch never pushed, deleted. PR #3. |
+| 19 | `README.md`, `DECISIONS.md` | Docs + decisions | README documents the contract tool (run, demo output, edge cases, honest limits) under the original intro. DECISIONS.md records the Days 14–18 choices: what was chosen, why, what was rejected. Git workflow above changed from "commit on `main`" to branch → PR → review → merge. Checked: day17.py on `main` = anchor totals and order. PR #4. |
 
 ## Roadmap (flexible)
 
