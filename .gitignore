@@ -5,3 +5,4 @@ offers_bad_row.csv
 # Python makes this cache folder when a file imports a module (Day 17)
 __pycache__/
 offers_short_row.csv
+offers.db
