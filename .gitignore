@@ -6,3 +6,5 @@ offers_bad_row.csv
 __pycache__/
 offers_short_row.csv
 offers.db
+# made by day24.py every run
+offers_clean.csv
