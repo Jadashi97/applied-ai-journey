@@ -88,7 +88,6 @@ Add a line each day: date, topic, what I learned, what was hard.
 
 ## Next up
 
-- **2026-11-14:** Finish the Day 22 work (left unfinished on 2026-11-13). Re-run `day22.py`, review it against the anchor, and finish what's left before starting Day 24.
 - Day 23 follow-up: in query (6), predict what `WHERE weekly_total > 3400` returns compared with `HAVING AVG(weekly_total) > 3400`, then check.
 
 ## Roadmap (flexible)
