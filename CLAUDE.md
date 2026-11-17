@@ -88,7 +88,7 @@ Add a line each day: date, topic, what I learned, what was hard.
 
 ## Next up
 
-- Day 23 follow-up: in query (6), predict what `WHERE weekly_total > 3400` returns compared with `HAVING AVG(weekly_total) > 3400`, then check.
+- Nothing queued right now.
 
 ## Roadmap (flexible)
 
