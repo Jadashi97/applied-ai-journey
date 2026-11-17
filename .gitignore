@@ -8,3 +8,5 @@ offers_short_row.csv
 offers.db
 # made by day24.py every run
 offers_clean.csv
+# real keys live in .env, which must never be committed (Day 25); .env.example is the safe template
+.env
