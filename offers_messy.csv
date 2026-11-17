@@ -1,0 +1,8 @@
+city,state,hourly_rate,stipend,hours
+Boston,MA,35,2500,40
+Burlington,VT,42,1900,36
+Cleveland,OH,39.53,1700,36
+Boston,MA,35,2500,40
+Austin,TX,forty,2100,36
+"  Burlington  ",VT,42,1900,36
+Denver,CO,40,,36
