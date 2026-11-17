@@ -20,7 +20,7 @@ A daily, hands-on learning journal for an **applied AI journey** (see [README.md
 
 - One file per day: `dayN.py` (e.g. `day1.py`, `day2.py`, `day3.py`). Reflection days use `dayN.md`.
 - Flat structure for now. When a project grows beyond one file, give it its own folder (e.g. `projects/<name>/`) with a short README.
-- No dependencies yet — plain Python 3 standard library.
+- Dependencies: Days 1–23 use only the plain Python 3 standard library. From Day 24, `pandas` is needed; it's listed (pinned) in [requirements.txt](requirements.txt). Add any new library there in the same PR that first uses it.
 
 ## Coding conventions (match these)
 
@@ -35,6 +35,12 @@ A daily, hands-on learning journal for an **applied AI journey** (see [README.md
 
 ```bash
 python3 day5.py
+```
+
+For Day 24 and later, install the libraries first (once):
+
+```bash
+pip install -r requirements.txt
 ```
 
 ## Git workflow
@@ -78,10 +84,10 @@ Add a line each day: date, topic, what I learned, what was hard.
 | 21 | `day21.py` | SQL with `sqlite3` | A database is a file of tables; `sqlite3.connect("offers.db")` creates it, the cursor runs SQL. `CREATE TABLE` with TEXT/REAL/INTEGER; `INSERT` with `?` placeholders (never f-strings: a quote mark like O'Hare breaks them); `commit()` saves. `ORDER BY ... DESC` = `sorted(reverse=True)`, `WHERE` = an `if`, SQL compares with one `=`, `SUM` = the running total. Weekly total still worked out once, by `rank_offers`. Gotchas: without `DROP TABLE IF EXISTS` a second run doubles every row (grand total $20,870.16, tested); `SUM` of no rows is `None`, not 0. Checked: Boston $3,900.00 → Burlington $3,412.00 → Cleveland $3,123.08, SUM $10,435.08; `> 10000` prints "no offers found". `offers.db` added to `.gitignore`. PR #5. |
 | 22 | `day22.py` | SQL: WHERE, AND/OR, BETWEEN, ORDER BY, LIMIT | Rebuilt `offers.db` with a `state` column; read the 3 offers from `offers.csv` (text → `float()`/`int()`), state and dates added from a city lookup. If `offers.csv` is missing (it's git-ignored), falls back to offers in memory. **Every value is a `?`** with values passed separately, even `LIMIT ?`; only column names/SQL words are written in. AND narrows (both true → Burlington only), OR widens (either true → all 3). `BETWEEN 3100 AND 3500` includes both ends; `ASC` = smallest first (Cleveland, Burlington). `ORDER BY hourly_rate DESC LIMIT 1` → Burlington $42 (a different winner from the total ranking). `WHERE state = 'TX'` → "no offers found". Checked: order Boston → Burlington → Cleveland, SUM $10,435.08 with and without `offers.csv`; second run still 3 rows. |
 | 23 | `day23.py` | SQL: JOIN, GROUP BY, HAVING | Second table `state_pay` (MA/VT/OH/NH avg + max pay, license; Vivian figures as given, not re-checked). JOIN matches rows on the shared `state` column: INNER keeps only matches (3 rows, NH dropped), LEFT keeps every left row (NH shows "no offer", its offer columns are `None`). `AS difference` names a computed column so `ORDER BY` can use it → Boston +$879 > Cleveland +$573.08 > Burlington +$171 (a different order from the total ranking). `GROUP BY` = one row per value: 36 hrs sum $6,535.08 / avg $3,267.54, 40 hrs $3,900. `HAVING` filters groups *after* the math, `WHERE` filters rows before → `HAVING AVG > 3400` keeps only 40 hrs, even though Burlington alone is $3,412. No f-strings in any SQL; every value is a `?`. Gotcha (tested): a duplicate MA row in `state_pay` makes the INNER JOIN return 4 rows and sum $14,335.08 (Boston counted twice). Checked: SUM $10,435.08; Boston → Burlington → Cleveland in (1); second run still 3 + 4 rows. |
+| 24 | `day24.py`, `offers_messy.csv` | pandas: cleaning messy data | First outside library (`pandas`, pinned in `requirements.txt`). A DataFrame is a table with named columns. Messy file: 7 synthetic rows = 3 good + exact Boston duplicate, Austin rate `"forty"`, `"  Burlington  "` (a duplicate once stripped), Denver blank stipend. Steps: `str.strip()` → `pd.to_numeric(errors="coerce")` (bad value → NaN, no crash) → `dropna` (dropped, not filled with 0) → `drop_duplicates` → `weekly_total` in one line for every row → `to_csv`. **Order matters (tested):** strip after dedup keeps both Burlingtons → $13,847.08; the anchor caught it, but the `rank_offers` cross-check still said True (it checks the math, not which rows belong). Checked: kept 3 of 7, Boston $3,900.00 → Burlington $3,412.00 → Cleveland $3,123.08, grand total $10,435.08. PR #8. |
 
 ## Next up
 
-- **2026-11-14:** Finish the Day 22 work (left unfinished on 2026-11-13). Re-run `day22.py`, review it against the anchor, and finish what's left before starting Day 24.
 - Day 23 follow-up: in query (6), predict what `WHERE weekly_total > 3400` returns compared with `HAVING AVG(weekly_total) > 3400`, then check.
 
 ## Roadmap (flexible)

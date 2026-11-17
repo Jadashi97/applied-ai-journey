@@ -1,0 +1,4 @@
+# Outside libraries this repo needs. Install with: pip install -r requirements.txt
+# Days 1-23 use only plain Python 3; pandas is needed from Day 24 (day24.py).
+# Pinned to the exact version day24.py was tested with, so results match.
+pandas==3.0.5
