@@ -1,5 +1,7 @@
 # Outside libraries this repo needs. Install with: pip install -r requirements.txt
 # Days 1-23 use only plain Python 3. pandas is needed from Day 24 (day24.py),
-# requests from Day 25 (day25.py). Each is pinned to the exact version it was tested with.
+# requests from Day 25 (day25.py), anthropic from Day 26 (day26.py, only for a real call
+# with a key; the no-key stub path runs without it). Each is pinned to the version it was tested with.
 pandas==3.0.5
 requests==2.34.2
+anthropic==2.10.0
