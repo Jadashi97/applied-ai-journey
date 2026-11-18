@@ -1,0 +1,19 @@
+{
+  "ranking": [
+    {
+      "city": "Boston",
+      "weekly_total": 3900.0
+    },
+    {
+      "city": "Burlington",
+      "weekly_total": 3412.0
+    },
+    {
+      "city": "Cleveland",
+      "weekly_total": 3123.08
+    }
+  ],
+  "best_city": "Boston",
+  "reason": "Boston has the highest weekly total because its 40 hours and $2,500 stipend outweigh its lower hourly rate.",
+  "source": "stub"
+}
