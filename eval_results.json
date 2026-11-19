@@ -1,0 +1,50 @@
+{
+  "score": "5/5",
+  "passed": 5,
+  "total": 5,
+  "cases": [
+    {
+      "name": "good ranking",
+      "expected": "accept",
+      "got": "accept",
+      "passed": true,
+      "problems": []
+    },
+    {
+      "name": "bad JSON",
+      "expected": "reject",
+      "got": "reject",
+      "passed": true,
+      "problems": [
+        "not valid JSON (Expecting ',' delimiter: line 1 column 53 (char 52))"
+      ]
+    },
+    {
+      "name": "wrong total",
+      "expected": "reject",
+      "got": "reject",
+      "passed": true,
+      "problems": [
+        "Burlington: reply says $3,421.00, Python says $3,412.00"
+      ]
+    },
+    {
+      "name": "missing best_city",
+      "expected": "reject",
+      "got": "reject",
+      "passed": true,
+      "problems": [
+        "reply: missing field 'best_city'"
+      ]
+    },
+    {
+      "name": "best_city not the top-ranked city",
+      "expected": "reject",
+      "got": "reject",
+      "passed": true,
+      "problems": [
+        "best_city 'Burlington' doesn't match the top-ranked city 'Boston'"
+      ]
+    }
+  ]
+}
