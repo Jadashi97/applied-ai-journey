@@ -1,0 +1,52 @@
+{
+  "embedding": "STUB word-overlap: crc32-hashed key words, 1024 dims, no model, no API",
+  "chunking": {
+    "size": 500,
+    "overlap": 50,
+    "total_chunks": 8
+  },
+  "confidence_rule": "top chunk must contain at least 50% of the question's key words",
+  "score": "3/3",
+  "passed": 3,
+  "total": 3,
+  "cases": [
+    {
+      "question": "Which city pays $3,900.00?",
+      "expected_source": "boston_offer.md",
+      "top1_source": "boston_offer.md",
+      "top1_chunk_index": 1,
+      "similarity": 0.1803,
+      "coverage": 0.6667,
+      "confident": true,
+      "passed": true
+    },
+    {
+      "question": "Which city pays $3,412.00?",
+      "expected_source": "burlington_offer.md",
+      "top1_source": "burlington_offer.md",
+      "top1_chunk_index": 1,
+      "similarity": 0.1782,
+      "coverage": 0.6667,
+      "confident": true,
+      "passed": true
+    },
+    {
+      "question": "Which city pays $3,123.08?",
+      "expected_source": "cleveland_offer.md",
+      "top1_source": "cleveland_offer.md",
+      "top1_chunk_index": 1,
+      "similarity": 0.1741,
+      "coverage": 0.6667,
+      "confident": true,
+      "passed": true
+    }
+  ],
+  "unanswerable": {
+    "question": "What is the signing bonus in Miami?",
+    "top1_source": "burlington_offer.md",
+    "similarity": 0.1782,
+    "coverage": 0.3333,
+    "confident": false,
+    "passed": true
+  }
+}
