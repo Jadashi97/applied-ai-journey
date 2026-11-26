@@ -1,0 +1,88 @@
+{
+  "score": "5/5",
+  "passed": 5,
+  "total": 5,
+  "grand_total_from_answers": 10435.08,
+  "grand_total_matches_anchor": true,
+  "top_k": 3,
+  "confidence_rule": "top chunk covers >= 50% of the question's key words",
+  "cases": [
+    {
+      "question": "Which city pays $3,900.00?",
+      "expected": {
+        "amount": 3900.0,
+        "source": "boston_offer.md"
+      },
+      "answer": "From boston_offer.md: \"The weekly total is $3,900.00.\" [boston_offer.md, chunk 1]",
+      "answered_by": "stub",
+      "rejected_because": [],
+      "retrieved": [
+        "[boston_offer.md, chunk 1]",
+        "[burlington_offer.md, chunk 1]",
+        "[cleveland_offer.md, chunk 1]"
+      ],
+      "passed": true
+    },
+    {
+      "question": "Which city pays $3,412.00?",
+      "expected": {
+        "amount": 3412.0,
+        "source": "burlington_offer.md"
+      },
+      "answer": "From burlington_offer.md: \"The weekly total is $3,412.00.\" [burlington_offer.md, chunk 1]",
+      "answered_by": "stub",
+      "rejected_because": [],
+      "retrieved": [
+        "[burlington_offer.md, chunk 1]",
+        "[boston_offer.md, chunk 1]",
+        "[cleveland_offer.md, chunk 1]"
+      ],
+      "passed": true
+    },
+    {
+      "question": "Which city pays $3,123.08?",
+      "expected": {
+        "amount": 3123.08,
+        "source": "cleveland_offer.md"
+      },
+      "answer": "From cleveland_offer.md: \"The weekly total is $3,123.08.\" [cleveland_offer.md, chunk 1]",
+      "answered_by": "stub",
+      "rejected_because": [],
+      "retrieved": [
+        "[cleveland_offer.md, chunk 1]",
+        "[boston_offer.md, chunk 1]",
+        "[burlington_offer.md, chunk 1]"
+      ],
+      "passed": true
+    },
+    {
+      "question": "Which offer pays a completion bonus, and how much is it?",
+      "expected": {
+        "amount": 1000.0,
+        "source": "burlington_offer.md"
+      },
+      "answer": "From burlington_offer.md: \"A fact found only in this offer: a $1,000.00 completion bonus is paid with the last paycheck if every scheduled shift is worked to the end of the contract.\" [burlington_offer.md, chunk 1]",
+      "answered_by": "stub",
+      "rejected_because": [],
+      "retrieved": [
+        "[burlington_offer.md, chunk 1]",
+        "[boston_offer.md, chunk 1]",
+        "[cleveland_offer.md, chunk 1]"
+      ],
+      "passed": true
+    },
+    {
+      "question": "What is the signing bonus in Miami?",
+      "expected": {
+        "dont_know": true
+      },
+      "answer": "I don't know — not in the documents",
+      "answered_by": "rule",
+      "rejected_because": [],
+      "retrieved": [
+        "[burlington_offer.md, chunk 1]"
+      ],
+      "passed": true
+    }
+  ]
+}
