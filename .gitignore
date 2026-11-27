@@ -10,3 +10,7 @@ offers.db
 offers_clean.csv
 # real keys live in .env, which must never be committed (Day 25); .env.example is the safe template
 .env
+# made by day28.py / day30.py every run (vector database, rebuilt from docs/)
+chroma_db/
+# day27.py writes this, then moves it into place as llm_ranking.json
+llm_ranking.json.tmp
