@@ -88,7 +88,12 @@ for text, metadata, vector in zip(stored["documents"], stored["metadatas"], stor
     with open(os.path.join(docs_folder, source), "r") as file:
         if text not in file.read():  # chunk must still be word for word in today's document
             setup_problems.append(f"{source} #{metadata.get('chunk_index')}: text no longer in the document")
-    if max(abs(a - b) for a, b in zip(vector, stub_embed(text))) > 1e-6:
+    # length first: zip() stops at the shorter list, so a 384-number vector (day30.py's real model)
+    # would otherwise be compared with only the first 384 of our 1024 numbers
+    if len(vector) != dimensions:
+        setup_problems.append(f"{source} #{metadata.get('chunk_index')}: stored vector has {len(vector)} numbers, "
+                              f"this file's stub_embed makes {dimensions} (another embedding built the collection)")
+    elif max(abs(a - b) for a, b in zip(vector, stub_embed(text))) > 1e-6:
         setup_problems.append(f"{source} #{metadata.get('chunk_index')}: stored vector != this file's stub_embed")
 print(f"loaded {collection.count()} chunks from {db_folder}, collection '{collection_name}':")
 for source in sorted(per_doc):
@@ -96,6 +101,12 @@ for source in sorted(per_doc):
 print(f"collection matches docs/ and the embedding: {not setup_problems}")
 for problem in setup_problems:
     print(f"  - {problem}")
+if setup_problems:
+    # Stop here: querying a collection built differently crashed with a traceback (found on Day 30).
+    # Exiting before the eval also leaves the saved qa_eval.json untouched.
+    print("the collection doesn't match what day29.py expects -- run `python3 day28.py` to rebuild it, then try again")
+    print("exit code: 1 (failed)")
+    sys.exit(1)
 
 
 #3 example Day 29: retrieve the top 3 chunks. Confidence = Day 28's rule on the top chunk.
