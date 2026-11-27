@@ -1,0 +1,184 @@
+{
+  "embedding": "all-MiniLM-L6-v2 (Chroma DefaultEmbeddingFunction, local ONNX)",
+  "dimensions": 384,
+  "same_as_stub_runs": "docs, chunking, top_k, confidence rule, answerer, checker",
+  "total_chunks": 8,
+  "anchor_totals_in_docs": true,
+  "retrieval": {
+    "score": "1/3",
+    "passed": 1,
+    "total": 3,
+    "cases": [
+      {
+        "question": "Which city pays $3,900.00?",
+        "expected_source": "boston_offer.md",
+        "passed": false,
+        "real": {
+          "top1": "[burlington_offer.md, chunk 1]",
+          "similarity": 0.4439,
+          "coverage": 0.3333,
+          "rank_of_correct_doc": 2,
+          "runner_up": "[boston_offer.md, chunk 1]",
+          "runner_up_similarity": 0.4367
+        },
+        "stub": {
+          "top1": "[boston_offer.md, chunk 1]",
+          "similarity": 0.1803,
+          "passed": true
+        }
+      },
+      {
+        "question": "Which city pays $3,412.00?",
+        "expected_source": "burlington_offer.md",
+        "passed": true,
+        "real": {
+          "top1": "[burlington_offer.md, chunk 1]",
+          "similarity": 0.4511,
+          "coverage": 0.6667,
+          "rank_of_correct_doc": 1,
+          "runner_up": "[boston_offer.md, chunk 1]",
+          "runner_up_similarity": 0.4318
+        },
+        "stub": {
+          "top1": "[burlington_offer.md, chunk 1]",
+          "similarity": 0.1782,
+          "passed": true
+        }
+      },
+      {
+        "question": "Which city pays $3,123.08?",
+        "expected_source": "cleveland_offer.md",
+        "passed": false,
+        "real": {
+          "top1": "[burlington_offer.md, chunk 1]",
+          "similarity": 0.3935,
+          "coverage": 0.3333,
+          "rank_of_correct_doc": 3,
+          "runner_up": "[boston_offer.md, chunk 1]",
+          "runner_up_similarity": 0.3821
+        },
+        "stub": {
+          "top1": "[cleveland_offer.md, chunk 1]",
+          "similarity": 0.1741,
+          "passed": true
+        }
+      }
+    ]
+  },
+  "qa": {
+    "score": "3/5",
+    "passed": 3,
+    "total": 5,
+    "grand_total_from_answers": 3412.0,
+    "cases": [
+      {
+        "question": "Which city pays $3,900.00?",
+        "expected": {
+          "amount": 3900.0,
+          "source": "boston_offer.md"
+        },
+        "passed": false,
+        "answer": "I don't know — not in the documents",
+        "rejected_because": [],
+        "real_retrieved": [
+          "[burlington_offer.md, chunk 1] 0.444",
+          "[boston_offer.md, chunk 1] 0.437",
+          "[cleveland_offer.md, chunk 1] 0.402"
+        ],
+        "real_top_similarity": 0.4439,
+        "stub": {
+          "answer": "From boston_offer.md: \"The weekly total is $3,900.00.\" [boston_offer.md, chunk 1]",
+          "passed": true
+        }
+      },
+      {
+        "question": "Which city pays $3,412.00?",
+        "expected": {
+          "amount": 3412.0,
+          "source": "burlington_offer.md"
+        },
+        "passed": true,
+        "answer": "From burlington_offer.md: \"The weekly total is $3,412.00.\" [burlington_offer.md, chunk 1]",
+        "rejected_because": [],
+        "real_retrieved": [
+          "[burlington_offer.md, chunk 1] 0.451",
+          "[boston_offer.md, chunk 1] 0.432",
+          "[cleveland_offer.md, chunk 1] 0.394"
+        ],
+        "real_top_similarity": 0.4511,
+        "stub": {
+          "answer": "From burlington_offer.md: \"The weekly total is $3,412.00.\" [burlington_offer.md, chunk 1]",
+          "passed": true
+        }
+      },
+      {
+        "question": "Which city pays $3,123.08?",
+        "expected": {
+          "amount": 3123.08,
+          "source": "cleveland_offer.md"
+        },
+        "passed": false,
+        "answer": "I don't know — not in the documents",
+        "rejected_because": [],
+        "real_retrieved": [
+          "[burlington_offer.md, chunk 1] 0.394",
+          "[boston_offer.md, chunk 1] 0.382",
+          "[cleveland_offer.md, chunk 1] 0.355"
+        ],
+        "real_top_similarity": 0.3935,
+        "stub": {
+          "answer": "From cleveland_offer.md: \"The weekly total is $3,123.08.\" [cleveland_offer.md, chunk 1]",
+          "passed": true
+        }
+      },
+      {
+        "question": "Which offer pays a completion bonus, and how much is it?",
+        "expected": {
+          "amount": 1000.0,
+          "source": "burlington_offer.md"
+        },
+        "passed": true,
+        "answer": "From burlington_offer.md: \"A fact found only in this offer: a $1,000.00 completion bonus is paid with the last paycheck if every scheduled shift is worked to the end of the contract.\" [burlington_offer.md, chunk 1]",
+        "rejected_because": [],
+        "real_retrieved": [
+          "[burlington_offer.md, chunk 1] 0.424",
+          "[boston_offer.md, chunk 1] 0.314",
+          "[boston_offer.md, chunk 0] 0.284"
+        ],
+        "real_top_similarity": 0.4241,
+        "stub": {
+          "answer": "From burlington_offer.md: \"A fact found only in this offer: a $1,000.00 completion bonus is paid with the last paycheck if every scheduled shift is worked to the end of the contract.\" [burlington_offer.md, chunk 1]",
+          "passed": true
+        }
+      },
+      {
+        "question": "What is the signing bonus in Miami?",
+        "expected": {
+          "dont_know": true
+        },
+        "passed": true,
+        "answer": "I don't know — not in the documents",
+        "rejected_because": [],
+        "real_retrieved": [
+          "[burlington_offer.md, chunk 1] 0.256",
+          "[boston_offer.md, chunk 0] 0.233",
+          "[cleveland_offer.md, chunk 0] 0.219"
+        ],
+        "real_top_similarity": 0.2559,
+        "stub": {
+          "answer": "I don't know — not in the documents",
+          "passed": true
+        }
+      }
+    ]
+  },
+  "findings": [
+    "WORSE (retrieval): 'Which city pays $3,900.00?' -- stub passed with [boston_offer.md, chunk 1], real top-1 is [burlington_offer.md, chunk 1]; correct document ranked 2",
+    "WORSE (retrieval): 'Which city pays $3,123.08?' -- stub passed with [cleveland_offer.md, chunk 1], real top-1 is [burlington_offer.md, chunk 1]; correct document ranked 3",
+    "WORSE (Q&A): 'Which city pays $3,900.00?' -- stub answer passed, real answer: \"I don't know — not in the documents\"",
+    "WORSE (Q&A): 'Which city pays $3,123.08?' -- stub answer passed, real answer: \"I don't know — not in the documents\"",
+    "safety: 0 wrong answer(s) given; 2 failure(s) were 'I don't know' refusals -- the word-coverage rule stopped a wrong document from being quoted",
+    "similarity gap: answerable questions' top similarity 0.394-0.451; Miami's top similarity 0.256 -- a similarity threshold alone COULD separate them",
+    "number questions: real top-1 beats the runner-up by only 0.007-0.019 similarity -- the model barely tells $3,900.00 from $3,412.00 (stub margins were ~0.09)"
+  ]
+}
